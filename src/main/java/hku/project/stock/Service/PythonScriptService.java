@@ -1,5 +1,6 @@
 package hku.project.stock.Service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -12,9 +13,13 @@ import java.io.InputStreamReader;
  **/
 @Service
 public class PythonScriptService {
+
+    @Value("${hku.projecy.python_file_path}")
+    private String pythonFilePath;
+
     public String runPythonScript(String propertyJson) {
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("python", "/Users/liuzhiyan/IdeaProject/stockPrediction-backend/src/main/resources/test.py", propertyJson);
+            ProcessBuilder processBuilder = new ProcessBuilder("python", pythonFilePath, propertyJson);
             Process process = processBuilder.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));

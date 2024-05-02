@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 @Service
 public class PythonScriptService {
 
-    @Value("${hku.projecy.python_file_path}")
+    @Value("${hku.project.python_file_path}")
     private String pythonFilePath;
 
     public String runPythonScript(String propertyJson) {
